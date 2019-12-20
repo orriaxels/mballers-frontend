@@ -25,6 +25,7 @@ export class TableComponent implements OnInit {
     .subscribe(players => {
       this.players = players
     });
+    
   }
 
 }

@@ -21,7 +21,9 @@ export class SerivceService {
     console.log("settings works");
     const ep = this.apiUrl + "players";
     return this.http.get(ep).pipe(map((response => {
+      console.log(response);
       return <Player[]> response
     })));        
+    
   }
 }
