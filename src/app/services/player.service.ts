@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SerivceService {
+export class PlayerService {
 
   apiUrl: string;
 
@@ -18,12 +18,18 @@ export class SerivceService {
   }
 
   getTable() : Observable<Player[]> {
-    console.log("settings works");
     const ep = this.apiUrl + "players";
     return this.http.get(ep).pipe(map((response => {
       console.log(response);
       return <Player[]> response
-    })));        
-    
+    })));            
+  }
+
+  getPlayerById(id) {
+    const ep = this.apiUrl + "players/" + id;
+    console.log("ep" + ep);
+    return this.http.get(ep).pipe(map((response => {
+      return <Player> response
+    })));
   }
 }

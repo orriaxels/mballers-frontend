@@ -8,4 +8,5 @@ export class Player {
     deleted:    boolean;
     gamesLost:  number;
     gamesWon:   number;
+    lastFive:   string;
 }

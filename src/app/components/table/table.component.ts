@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from "../../interfaces/player";
-import { SerivceService } from 'src/app/services/serivce.service';
+import { PlayerService } from 'src/app/services/player.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -11,13 +11,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TableComponent implements OnInit {
 
+  id: number;
   players: Player[];
   player: Player;
 
-  constructor(private service: SerivceService, private route: ActivatedRoute) { }
+  constructor(private service: PlayerService, private route: ActivatedRoute) 
+  { 
+    //this.id = this.route.snapshot.params['id'];
+  }
 
   ngOnInit() {
+    this.id = 47;
     this.getPlayers();
+    this.getPlayerById();
   }
 
   getPlayers(){
@@ -25,7 +31,18 @@ export class TableComponent implements OnInit {
     .subscribe(players => {
       this.players = players
     });
-    
+
+    this.players.forEach(element => {
+      console.log(element);
+    });
+  }
+  
+  getPlayerById(){
+    console.log("here");
+    this.service.getPlayerById(this.id).subscribe(result => {
+      this.player = result;
+      console.log(result);
+    })
   }
 
 }
