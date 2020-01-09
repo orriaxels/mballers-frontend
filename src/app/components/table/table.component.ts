@@ -12,12 +12,13 @@ import { ActivatedRoute } from '@angular/router';
 export class TableComponent implements OnInit {
 
   id: number;
-  players: Player[];
+  players: Player[] = [];
   player: Player;
+  displayedColumns: string[] = ['pos', 'name', 'wins', 'losses', 'draws', 'attented', 'gamesWon', 'gamesLost', 'lastFive'];
 
-  constructor(private service: PlayerService, private route: ActivatedRoute) 
+  constructor(private service: PlayerService) 
   { 
-    //this.id = this.route.snapshot.params['id'];
+    
   }
 
   ngOnInit() {

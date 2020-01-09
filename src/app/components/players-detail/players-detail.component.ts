@@ -35,6 +35,7 @@ export class PlayersDetailComponent implements OnInit {
       if(x.length > 5)
         x = x.slice(Math.max(x.length - 5, 1));
       
+        console.log(this.player);
         console.log(x);
     })
 

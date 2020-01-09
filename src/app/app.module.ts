@@ -13,15 +13,22 @@ import { TestingComponent } from './components/testing/testing.component';
 import { PlayersDetailComponent } from './components/players-detail/players-detail.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes } from '@angular/router';
 
-// Routes
-const routes: Routes = [
-  {path: "", redirectTo: 'table', pathMatch: 'full'},
-  {path: "table", component: TableComponent},
-  {path: "players/:id", component: PlayersDetailComponent}
-]
+// Material
+import { MatSliderModule, MatTableModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+// // Routes
+// const routes: Routes = [
+//   {path: "", redirectTo: 'table', pathMatch: 'full'},
+//   {path: "table", component: TableComponent},
+//   {path: "players/:id", component: PlayersDetailComponent}
+// ]
 
 @NgModule({
   declarations: [
@@ -32,10 +39,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,    
-    RouterModule.forRoot(routes),
-
-    HttpClientModule, BrowserAnimationsModule
+    AppRoutingModule,    
+    MatTableModule,
+    MatSliderModule,
+    HttpClientModule, 
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    NgbModule
   ],
   providers: [
     PlayerService,
