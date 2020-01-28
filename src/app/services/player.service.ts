@@ -19,10 +19,9 @@ export class PlayerService {
 
   getTable() : Observable<Player[]> {
     const ep = this.apiUrl + "players";
-    return this.http.get(ep).pipe(map((response => {
-      console.log(response);
-      return <Player[]> response
-    })));            
+    return this.http.get<Player[]>(ep).pipe(map(response => 
+      response.sort((a1: Player, a2: Player) => a2.wins - a1.wins)    
+    ));            
   }
 
   getPlayerById(id) {

@@ -1,4 +1,3 @@
-<p>table works!</p>
 
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
 
@@ -10,7 +9,7 @@
   <!-- Position Column -->
   <ng-container matColumnDef="pos">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element">  </td>
+    <td mat-cell *matCellDef="let element"> {{element.pos}}  </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -50,21 +49,25 @@
     <td mat-cell *matCellDef="let element"> {{element.gamesLost}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="difference">
+    <th mat-header-cell *matHeaderCellDef> Difference </th>
+    <td mat-cell *matCellDef="let element"> {{element.difference}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="lastFive">
     <th mat-header-cell *matHeaderCellDef> Last Five </th>
-    <td mat-cell *matCellDef="let element"> {{element.lastFive}} </td>
+    <td mat-cell *matCellDef="let element">
+      <div *ngFor="let x of element.lFive">    
+        <div *ngIf="x;else other" class="win"></div>
+        <ng-template #other>
+        <div class="loss"></div></ng-template>
+      </div>    
+    </td>
   </ng-container>
 
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<tbody>
-    <tr></tr>
-    <tr class="tableHover" *ngFor="let player of players">
-        <td>{{player.name}}</td>
-    </tr>
-</tbody>
 
 </div>

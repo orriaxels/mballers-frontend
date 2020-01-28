@@ -1,3 +1,25 @@
 table {
     width: 100%;
   }
+
+
+  .win {
+    margin-right: 4px;
+    background: #00b100;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    float: left;
+    display: inline-block;
+  
+  }
+  
+  .loss {
+    margin-right: 4px;
+    background: #a90c29;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    float: left;
+    display: inline-block;
+  }
