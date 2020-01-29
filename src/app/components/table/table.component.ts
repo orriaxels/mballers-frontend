@@ -12,7 +12,19 @@ export class TableComponent implements OnInit {
   id: number;
   players: Player[] = [];
   player: Player;
-  displayedColumns: string[] = ['pos', 'name', 'wins', 'losses', 'draws', 'attented', 'gamesWon', 'gamesLost', 'difference', 'lastFive'];
+  displayedColumns: any = [
+    {def: 'pos', label: 'Position', showMobile: true },
+    {def: 'name', label: 'Name', showMobile: true },
+    {def: 'wins', label: 'wins', showMobile: true },
+    {def: 'losses', label: 'losses', showMobile: true },
+    {def: 'draws', label: 'draws', showMobile: false },
+    {def: 'attented', label: 'attented', showMobile: false },
+    {def: 'games', label: 'games', showMobile: false },
+    {def: 'difference', label: 'difference', showMobile: true },
+    {def: 'lastFive', label: 'lastFive', showMobile: true },
+  ];
+  innerWidth: any;
+
 
   constructor(private service: PlayerService) 
   { 
@@ -23,6 +35,17 @@ export class TableComponent implements OnInit {
     this.id = 47;
     this.getPlayers();
     this.getPlayerById();
+    this.innerWidth = window.innerWidth;
+
+    console.log("width:" + this.innerWidth);
+  }
+
+  getDisplayedColumns(): string[] {
+    const isMobile = this.innerWidth < 500;
+    console.log(isMobile);
+    return this.displayedColumns
+      .filter(cd => !isMobile || cd.showMobile)
+      .map(cd => cd.def);
   }
 
   getPlayers(){

@@ -23,3 +23,21 @@ table {
     float: left;
     display: inline-block;
   }
+
+  
+.name {
+  width: 15%;
+}
+
+.other {
+  width: 7%;
+}
+
+.games {
+  width: 10%;
+}
+
+.mat-column-pos
+{
+  padding-left: 5px;
+}
